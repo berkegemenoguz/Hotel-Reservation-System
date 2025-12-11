@@ -2,6 +2,6 @@
 // Interface Class Added
 public interface Bookings {
 
-    double calculatePrice(int days);
+    double CalculatePrice(int days);
         String getRoomDetails();
 }
