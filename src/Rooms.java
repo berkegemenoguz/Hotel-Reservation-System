@@ -37,13 +37,12 @@ public abstract class Rooms implements Bookings{
         isOccupied = occupied;
     }
 
+
+    // Kod okunabilirliği için
     @Override
     public abstract double CalculatePrice(int Days);
 
     @Override
     public abstract String getRoomDetails();
-
-
-
 
 }
