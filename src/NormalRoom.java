@@ -12,7 +12,7 @@ public class NormalRoom extends Rooms {
 
     @Override
     public String getRoomDetails(){
-        return "Normal Oda ==> Numaranız:" + getRoomNumber();
+        return "Normal Room ==> Room No: " + getRoomNumber();
     }
 
 

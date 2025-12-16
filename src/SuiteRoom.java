@@ -14,6 +14,6 @@ public class SuiteRoom extends Rooms {
 
     @Override
     public String getRoomDetails() {
-        return "Lüks Suit Oda (VIP) - No: " + getRoomNumber();
+        return "Suite Room ==> Room No: " + getRoomNumber();
     }
 }
