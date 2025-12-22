@@ -1,15 +1,13 @@
 public class SuiteRoom extends Rooms {
 
-    private double ServiceFee;
 
-    public SuiteRoom(int RoomNumber, double NormalPrice, double ServiceFee) {
+    public SuiteRoom(int RoomNumber, double NormalPrice) {
         super(RoomNumber, NormalPrice);
-        this.ServiceFee = ServiceFee;
     }
 
     @Override
     public double CalculatePrice(int Days){
-        return (getNormalPrice() * Days) + ServiceFee;
+        return (getNormalPrice() * Days);
     }
 
     @Override

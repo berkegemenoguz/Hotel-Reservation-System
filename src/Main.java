@@ -9,7 +9,7 @@ public class Main {
 
 
         Rooms oda101 = new NormalRoom(101, 1000.0);
-        Rooms oda201 = new SuiteRoom(201, 2500.0, 500.0);
+        Rooms oda201 = new SuiteRoom(201, 3000.0);
 
 
         Reservation r1 = new Reservation(musteri1, oda201, 3);
