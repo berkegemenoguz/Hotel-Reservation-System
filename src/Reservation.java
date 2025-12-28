@@ -6,7 +6,6 @@ public class Reservation {
     private int StayDays;
     private double TotalPrice;
 
-
     private ArrayList<RoomService> extraServices;
 
     public Reservation(Customer Client, Rooms Room, int stayDays) {
@@ -24,7 +23,7 @@ public class Reservation {
             this.extraServices = new ArrayList<>();
 
             Room.setOccupied(true);
-            System.out.println("\nReservation Created for " + Client.getName());
+            System.out.println("\nReservation Created for " + Client.getName() + " " + Client.getSurname());
         }
     }
 
@@ -33,7 +32,6 @@ public class Reservation {
         if (this.Client != null) {
             this.extraServices.add(service);
             this.TotalPrice += service.getServicePrice();
-            System.out.println("Service Added: " + service.getServiceName());
         }
     }
 
@@ -61,5 +59,9 @@ public class Reservation {
             System.out.println("Total Amount   : " + TotalPrice + " TL");
             System.out.println("----------------------------------------\n");
         }
+    }
+
+    public double getTotalPrice() {
+        return TotalPrice;
     }
 }

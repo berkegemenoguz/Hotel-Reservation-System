@@ -14,10 +14,4 @@ public class NormalRoom extends Rooms {
     public String getRoomDetails(){
         return "Normal Room ==> Room No: " + getRoomNumber();
     }
-
-
-
-
-
-
 }
