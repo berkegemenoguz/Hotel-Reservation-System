@@ -1,32 +1,29 @@
 import java.util.ArrayList;
 
 public class Reservation {
-    private Customer Client;
-    private Rooms Room;
+    private final Customer Client;
+    private final Rooms Room;
     private int StayDays;
     private double TotalPrice;
 
-    private ArrayList<RoomService> extraServices;
+    private final ArrayList<RoomService> extraServices;
 
     public Reservation(Customer Client, Rooms Room, int stayDays) {
         if (Room.isOccupied()) {
-            System.out.println("Warning: Room " + Room.getRoomNumber() + " is full.");
-        } else {
-            this.Client = Client;
-            this.Room = Room;
-            this.StayDays = stayDays;
-
-
-            this.TotalPrice = Room.CalculatePrice(stayDays);
-
-
-            this.extraServices = new ArrayList<>();
-
-            Room.setOccupied(true);
-            System.out.println("\nReservation Created for " + Client.getName() + " " + Client.getSurname());
+            throw new IllegalStateException("Room " + Room.getRoomNumber() + " is already occupied.\n");
         }
-    }
 
+        this.Client = Client;
+        this.Room = Room;
+        this.StayDays = stayDays;
+
+        this.TotalPrice = Room.CalculatePrice(stayDays);
+
+        this.extraServices = new ArrayList<>();
+
+        Room.setOccupied(true);
+        System.out.println("\nReservation Created for " + Client.getName() + " " + Client.getSurname());
+    }
 
     public void addService(RoomService service) {
         if (this.Client != null) {
@@ -45,7 +42,7 @@ public class Reservation {
             System.out.println("ID: " + Client.getId());
             System.out.println("----------------------------------------");
             System.out.println("Room Info      : " + Room.getRoomDetails());
-            System.out.println("Days to stay   : " + StayDays );
+            System.out.println("Days to stay   : " + StayDays);
             System.out.println("Room Price     : " + Room.CalculatePrice(StayDays) + " TL");
 
             if (!extraServices.isEmpty()) {
