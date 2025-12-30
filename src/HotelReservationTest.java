@@ -25,13 +25,20 @@ public class HotelReservationTest {
     }
 
     @Test
-    @DisplayName("Price calculation works for different room types")
+    @DisplayName("Price calculation works for different room types.")
     void testRoomPriceCalculation() {
         assertEquals(2500.0, normalRoom.CalculatePrice(5), "Normal room price for 5 days should be 2500");
         assertEquals(3000.0, suiteRoom.CalculatePrice(3), "Suite room price for 3 days should be 3000");
     }
 
-
+    @Test
+    @DisplayName("Room details returns the correct format.")
+    void testRoomDetails() {
+        assertEquals("Normal Room ==> Room No: 101", normalRoom.getRoomDetails(),
+                "Normal room details format is incorrect");
+        assertEquals("Suite Room ==> Room No: 201", suiteRoom.getRoomDetails(),
+                "Suite room details format is incorrect");
+    }
 
 
 
