@@ -40,6 +40,13 @@ public class HotelReservationTest {
                 "Suite room details format is incorrect");
     }
 
+    @Test
+    @DisplayName("Reservation action creates and marks the room as occupied.")
+    void testReservationCreation() {
+        Reservation reservation = new Reservation(customer, normalRoom, 3);
+        assertEquals(1500.0, reservation.getTotalPrice(), "Reservation total should be 1500.");
+        assertTrue(normalRoom.isOccupied(), "Room should be marked as occupied after reservation.");
+    }
 
 
 
