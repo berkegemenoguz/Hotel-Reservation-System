@@ -33,6 +33,21 @@ public class Main {
 
             r2.prd();
             r1.prd();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         } catch (IllegalStateException e) {
             System.out.println("\nError: " + e.getMessage());
         }

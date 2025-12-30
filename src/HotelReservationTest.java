@@ -57,4 +57,12 @@ public class HotelReservationTest {
         assertEquals(1100.0, reservation.getTotalPrice(), "Total should include service price.");
     }
 
+    @Test
+    @DisplayName("Booking occupied room throws IllegalStateException")
+    void testOccupiedRoomThrowsException() {
+        NormalRoom.setOccupied(true);
+        assertThrows(IllegalStateException.class, () -> {
+            new Reservation(customer, NormalRoom, 2);
+        }, "Should throw IllegalStateException when room is occupied");
+    }
 }
