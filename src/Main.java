@@ -3,19 +3,19 @@ public class Main {
         System.out.println("\n---Hotel System is Launching---");
 
         Customer musteri1 = new Customer(1, "Ahmad", "Gurkan", "ahmadgurkan@gmail.com", "111");
-        Rooms oda201 = new SuiteRoom(201, 3000.0);
+        Rooms oda201 = new SuiteRoom(201, 3000);
 
         Customer musteri2 = new Customer(2, "Mr Worldwide", "DJ Snake", "snake@gmail.com","212121");
         Rooms oda101 = new NormalRoom(101, 1500);
 
         Customer musteri3 = new Customer(3, "Vadaa", "Morogullari", "Vadaa@gmail.com", "3321");
 
-        RoomService gym = new RoomService("Gym Membership", 300);
-        RoomService valet = new RoomService("Vale Service", 300);
-        RoomService extraBed = new RoomService("Extra Bed", 750);
-        RoomService transfer = new RoomService("Airport Transportation", 1200);
-        RoomService minibar = new RoomService("Minibar", 300);
-        RoomService spa = new RoomService("Spa Session", 500);
+        RoomService gym = new RoomService("Gym Membership", (int) Prices.GYM_SERVICE_PRICE);
+        RoomService valet = new RoomService("Vale Service", (int) Prices.VALET_SERVICE_PRICE);
+        RoomService extraBed = new RoomService("Extra Bed", (int) Prices.EXTRA_BED_PRICE);
+        RoomService transfer = new RoomService("Airport Transportation", (int) Prices.AIRPORT_TRANSFER_PRICE);
+        RoomService minibar = new RoomService("Minibar", (int) Prices.MINIBAR_PRICE);
+        RoomService spa = new RoomService("Spa Session", (int) Prices.SPA_SERVICE_PRICE);
 
         try {
             Reservation r1 = new Reservation(musteri1, oda201, 3);
