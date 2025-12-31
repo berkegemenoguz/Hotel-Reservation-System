@@ -1,8 +1,8 @@
 public class NormalRoom extends Rooms {
 
-    public NormalRoom(int RoomNumber, double NormalPrice) {
+    public NormalRoom(int RoomNumber) {
 
-        super(RoomNumber, NormalPrice);
+        super(RoomNumber, Prices.NORMAL_ROOM_PRICE);
     }
 
     @Override

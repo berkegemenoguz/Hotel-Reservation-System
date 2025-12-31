@@ -6,7 +6,7 @@ public class Main {
         Rooms oda201 = new SuiteRoom(201);
 
         Customer musteri2 = new Customer(2, "Mr Worldwide", "DJ Snake", "snake@gmail.com","212121");
-        Rooms oda101 = new NormalRoom(101, 1500);
+        Rooms oda101 = new NormalRoom(101);
 
         Customer musteri3 = new Customer(3, "Vadaa", "Morogullari", "Vadaa@gmail.com", "3321");
 
