@@ -14,7 +14,7 @@ public class HotelReservationTest {
     void setUp() {
         customer = new Customer(1, "Bilal", "Hancı", "bilalhanci@gmail.com", "321321");
         NormalRoom = new NormalRoom(101, 500.0);
-        SuiteRoom = new SuiteRoom(201, 1000.0);
+        SuiteRoom = new SuiteRoom(201);
     }
 
     @Test

@@ -3,7 +3,7 @@ public class Main {
         System.out.println("\n---Hotel System is Launching---");
 
         Customer musteri1 = new Customer(1, "Ahmad", "Gurkan", "ahmadgurkan@gmail.com", "111");
-        Rooms oda201 = new SuiteRoom(201, 3000);
+        Rooms oda201 = new SuiteRoom(201);
 
         Customer musteri2 = new Customer(2, "Mr Worldwide", "DJ Snake", "snake@gmail.com","212121");
         Rooms oda101 = new NormalRoom(101, 1500);

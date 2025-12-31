@@ -1,8 +1,8 @@
 public class SuiteRoom extends Rooms {
 
 
-    public SuiteRoom(int RoomNumber, double NormalPrice) {
-        super(RoomNumber, NormalPrice);
+    public SuiteRoom(int RoomNumber) {
+        super(RoomNumber, Prices.SUITE_ROOM_PRICE);
     }
 
     @Override
