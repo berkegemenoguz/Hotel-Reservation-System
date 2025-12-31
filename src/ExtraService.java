@@ -1,9 +1,9 @@
-public class RoomService {
+public class ExtraService {
 
     private String ServiceName;
     private int ServicePrice;
 
-    public RoomService(String serviceName, int servicePrice) {
+    public ExtraService(String serviceName, int servicePrice) {
         ServiceName = serviceName;
         ServicePrice = servicePrice;
     }

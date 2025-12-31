@@ -10,12 +10,12 @@ public class Main {
 
         Customer musteri3 = new Customer(3, "Vadaa", "Morogullari", "Vadaa@gmail.com", "3321");
 
-        RoomService gym = new RoomService("Gym Membership", (int) Prices.GYM_SERVICE_PRICE);
-        RoomService valet = new RoomService("Vale Service", (int) Prices.VALET_SERVICE_PRICE);
-        RoomService extraBed = new RoomService("Extra Bed", (int) Prices.EXTRA_BED_PRICE);
-        RoomService transfer = new RoomService("Airport Transportation", (int) Prices.AIRPORT_TRANSFER_PRICE);
-        RoomService minibar = new RoomService("Minibar", (int) Prices.MINIBAR_PRICE);
-        RoomService spa = new RoomService("Spa Session", (int) Prices.SPA_SERVICE_PRICE);
+        ExtraService gym = new ExtraService("Gym Membership", (int) Prices.GYM_SERVICE_PRICE);
+        ExtraService valet = new ExtraService("Vale Service", (int) Prices.VALET_SERVICE_PRICE);
+        ExtraService extraBed = new ExtraService("Extra Bed", (int) Prices.EXTRA_BED_PRICE);
+        ExtraService transfer = new ExtraService("Airport Transportation", (int) Prices.AIRPORT_TRANSFER_PRICE);
+        ExtraService minibar = new ExtraService("Minibar", (int) Prices.MINIBAR_PRICE);
+        ExtraService spa = new ExtraService("Spa Session", (int) Prices.SPA_SERVICE_PRICE);
 
         try {
             Reservation r1 = new Reservation(musteri1, oda201, 3);
