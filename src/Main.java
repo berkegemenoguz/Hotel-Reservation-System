@@ -10,39 +10,18 @@ public class Main {
 
         Customer musteri3 = new Customer(3, "Vadaa", "Morogullari", "Vadaa@gmail.com", "3321");
 
-        ExtraService gym = new ExtraService("Gym Membership", (int) Prices.GYM_SERVICE_PRICE);
-        ExtraService valet = new ExtraService("Vale Service", (int) Prices.VALET_SERVICE_PRICE);
-        ExtraService extraBed = new ExtraService("Extra Bed", (int) Prices.EXTRA_BED_PRICE);
-        ExtraService transfer = new ExtraService("Airport Transportation", (int) Prices.AIRPORT_TRANSFER_PRICE);
-        ExtraService minibar = new ExtraService("Minibar", (int) Prices.MINIBAR_PRICE);
-        ExtraService spa = new ExtraService("Spa Session", (int) Prices.SPA_SERVICE_PRICE);
-
         try {
             Reservation r1 = new Reservation(musteri1, oda201, 3);
             Reservation r2 = new Reservation(musteri2, oda101, 2);
 
-            r1.addService(gym);
-            r1.addService(valet);
-            r1.addService(transfer);
-            r1.addService(extraBed);
-            r1.addService(spa);
+            r1.addService(ExtraServiceRegister.GYM);
+            r1.addService(ExtraServiceRegister.VALET);
 
-            r2.addService(gym);
-            r2.addService(transfer);
-            r2.addService(minibar);
+            r2.addService(ExtraServiceRegister.AIRPORT_TRANSFER);
+            r2.addService(ExtraServiceRegister.SPA);
 
             r2.prd();
             r1.prd();
-
-
-
-
-
-
-
-
-
-
 
 
 
