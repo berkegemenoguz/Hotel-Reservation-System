@@ -36,14 +36,14 @@ public class RoomManager {
     public static void listAllRooms() {
         System.out.println("\n------------------------ ROOM LIST ------------------------");
         System.out.println("Normal Rooms:");
-        System.out.println("  N101 - Room 101 " + (N101.isOccupied() ? "[DOLU]" : "[EMPTY]"));
-        System.out.println("  N102 - Room 102 " + (N102.isOccupied() ? "[DOLU]" : "[EMPTY]"));
-        System.out.println("  N103 - Room 103 " + (N103.isOccupied() ? "[DOLU]" : "[EMPTY]"));
-        System.out.println("  N104 - Room 104 " + (N104.isOccupied() ? "[DOLU]" : "[EMPTY]"));
-        System.out.println("  N105 - Room 105 " + (N105.isOccupied() ? "[DOLU]" : "[EMPTY]"));
-        System.out.println("  N106 - Room 106 " + (N106.isOccupied() ? "[DOLU]" : "[EMPTY]"));
-        System.out.println("  N107 - Room 107 " + (N107.isOccupied() ? "[DOLU]" : "[EMPTY]"));
-        System.out.println("  N108 - Room 108 " + (N108.isOccupied() ? "[DOLU]" : "[EMPTY]"));
+        System.out.println("  N101 - Room 101 " + (N101.isOccupied() ? "[FULL]" : "[EMPTY]"));
+        System.out.println("  N102 - Room 102 " + (N102.isOccupied() ? "[FULL]" : "[EMPTY]"));
+        System.out.println("  N103 - Room 103 " + (N103.isOccupied() ? "[FULL]" : "[EMPTY]"));
+        System.out.println("  N104 - Room 104 " + (N104.isOccupied() ? "[FULL]" : "[EMPTY]"));
+        System.out.println("  N105 - Room 105 " + (N105.isOccupied() ? "[FULL]" : "[EMPTY]"));
+        System.out.println("  N106 - Room 106 " + (N106.isOccupied() ? "[FULL]" : "[EMPTY]"));
+        System.out.println("  N107 - Room 107 " + (N107.isOccupied() ? "[FULL]" : "[EMPTY]"));
+        System.out.println("  N108 - Room 108 " + (N108.isOccupied() ? "[FULL]" : "[EMPTY]"));
         System.out.println("\nSuite Rooms:");
         System.out.println("  S201 - Room 201 " + (S201.isOccupied() ? "[FULL]" : "[EMPTY]"));
         System.out.println("  S202 - Room 202 " + (S202.isOccupied() ? "[FULL]" : "[EMPTY]"));
