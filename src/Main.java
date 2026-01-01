@@ -24,9 +24,6 @@ public class Main {
             r1.prd();
 
 
-
-
-
         } catch (IllegalStateException e) {
             System.out.println("\nError: " + e.getMessage());
         }
