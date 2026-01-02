@@ -106,7 +106,7 @@ public class CSVManager {
     }
 
     //---------------------------------------------------------------------RESERVATION OPERATIONS
-
+    //Saves reservation files.
     private static String getRoomCode(Rooms room) {
         if (room == RoomManager.N101)
             return "N101";
@@ -131,6 +131,26 @@ public class CSVManager {
         return "UNKNOWN";
     }
 
+    public static void saveReservation(Customer customer, Rooms room, int days, List<ExtraService> services, double totalPrice) {
+        try (PrintWriter pw = new PrintWriter(new FileWriter(RESERVATIONS_FILE, true))) {
+            StringBuilder servicesStr = new StringBuilder();
+            for (ExtraService s : services) {
+                if (servicesStr.length() > 0)
+                    servicesStr.append(";");
+                servicesStr.append(s.getServiceName());
+            }
+
+            String roomCode = getRoomCode(room);
+            pw.println(customer.getId() + "," +
+                    customer.getName() + " " + customer.getSurname() + "," +
+                    roomCode + "," +
+                    days + "," +
+                    servicesStr + "," +
+                    totalPrice);
+        } catch (IOException e) {
+            System.out.println("Reservation register error: " + e.getMessage());
+        }
+    }
 }
 
 
