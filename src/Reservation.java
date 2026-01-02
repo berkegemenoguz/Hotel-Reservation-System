@@ -61,4 +61,26 @@ public class Reservation {
     public double getTotalPrice() {
         return TotalPrice;
     }
+
+    public Customer getClient() {
+        return Client;
+    }
+
+    public Rooms getRoom() {
+        return Room;
+    }
+
+    public int getStayDays() {
+        return StayDays;
+    }
+
+    public ArrayList<ExtraService> getAdditionalServices() {
+        return additional;
+    }
+
+    public void saveToCSV() {
+        CSVManager.saveReservation(Client, Room, StayDays, additional, TotalPrice);
+        CSVManager.saveRoomStatus();
+    }
+
 }
