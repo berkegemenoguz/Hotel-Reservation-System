@@ -12,7 +12,7 @@ public class CSVManager {
         new File(DATA_DIR).mkdirs();
     }
 
-    // CUSTOMER OPERATIONS
+    //---------------------------------------------------------------------CUSTOMER OPERATIONS
 
     //Saves Customers to CSV files
     public static void saveCustomer(Customer customer) {
@@ -44,4 +44,43 @@ public class CSVManager {
         }
         return customers;
     }
+    //---------------------------------------------------------------------ROOM OPERATIONS
+    //Saves Room files
+
+    private static void saveRoomLine(PrintWriter pw, String code, Rooms room) {
+        String type = (room instanceof SuiteRoom) ? "Suite" : "Normal";
+        pw.println(code + "," + room.getRoomNumber() + "," + type + "," + room.isOccupied());
+    }
+
+    public static void saveRoomStatus() {
+        try (PrintWriter pw = new PrintWriter(new FileWriter(ROOMS_FILE))) {
+            // Header
+            pw.println("RoomCode,RoomNumber,Type,IsOccupied");
+
+            saveRoomLine(pw, "N101", RoomManager.N101);
+            saveRoomLine(pw, "N102", RoomManager.N102);
+            saveRoomLine(pw, "N103", RoomManager.N103);
+            saveRoomLine(pw, "N104", RoomManager.N104);
+            saveRoomLine(pw, "N105", RoomManager.N105);
+            saveRoomLine(pw, "N106", RoomManager.N106);
+            saveRoomLine(pw, "N107", RoomManager.N107);
+            saveRoomLine(pw, "N108", RoomManager.N108);
+
+            saveRoomLine(pw, "S201", RoomManager.S201);
+            saveRoomLine(pw, "S202", RoomManager.S202);
+
+        } catch (IOException e) {
+            System.out.println("Room register error: " + e.getMessage());
+        }
+    }
+
+
+
+
+
+
+
+
+
+
 }
