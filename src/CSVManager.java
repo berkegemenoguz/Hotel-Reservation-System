@@ -179,6 +179,12 @@ public class CSVManager {
 
     }
 
+    public static void clearAllData() {
+        new File(CUSTOMERS_FILE).delete();
+        new File(ROOMS_FILE).delete();
+        new File(RESERVATIONS_FILE).delete();
+        System.out.println("All the data erased from memo.");
+    }
 
 
 
