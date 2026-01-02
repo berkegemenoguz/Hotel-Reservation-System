@@ -23,7 +23,7 @@ public class CSVManager {
         }
     }
 
-    //Reads the customers from CSV files
+    //Reads the customers from CSV and updates it with customers.add
     public static List<Customer> loadCustomers() {
         List<Customer> customers = new ArrayList<>();
         File file = new File(CUSTOMERS_FILE);
@@ -74,7 +74,36 @@ public class CSVManager {
         }
     }
 
+    // Reads from CSV files and updates them with setOccupied
+    public static void loadRoomStatus() {
+        File file = new File(ROOMS_FILE);
+        if (!file.exists())
+            return;
 
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            boolean isHeader = true;
+            while ((line = br.readLine()) != null) {
+                if (isHeader) {
+                    isHeader = false;
+                    continue;
+                }
+
+                String[] parts = line.split(",");
+                if (parts.length >= 4) {
+                    String roomCode = parts[0].trim();
+                    boolean isOccupied = Boolean.parseBoolean(parts[3].trim());
+
+                    Rooms room = RoomManager.getRoom(roomCode);
+                    if (room != null) {
+                        room.setOccupied(isOccupied);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Room reading error: " + e.getMessage());
+        }
+    }
 
 
 
