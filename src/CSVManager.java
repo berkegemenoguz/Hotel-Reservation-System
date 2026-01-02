@@ -151,8 +151,16 @@ public class CSVManager {
             System.out.println("Reservation register error: " + e.getMessage());
         }
     }
-}
+    //lists every reservation
+    public static void listReservations() {
+        File file = new File(RESERVATIONS_FILE);
+        if (!file.exists()) {
+            System.out.println("No reservations yet.");
+        }
 
+
+    }
+}
 
 
 
