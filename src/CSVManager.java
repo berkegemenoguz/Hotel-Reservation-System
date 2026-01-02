@@ -151,16 +151,54 @@ public class CSVManager {
             System.out.println("Reservation register error: " + e.getMessage());
         }
     }
+
     //lists every reservation
     public static void listReservations() {
         File file = new File(RESERVATIONS_FILE);
         if (!file.exists()) {
             System.out.println("No reservations yet.");
+            return;
         }
 
+        System.out.println("\n---------RESERVATIONS---------");
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            int count = 1;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length >= 6) {
+                    System.out.println(count + ". " + parts[1] + " | Room: " + parts[2] +
+                            " | " + parts[3] + " Days | " + parts[5] + " TL");
+                    count++;
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Reservation reading error: " + e.getMessage());
+        }
+        System.out.println("---------------------------------------------\n");
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
 
 
 
