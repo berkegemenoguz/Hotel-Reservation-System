@@ -105,6 +105,90 @@ public class CSVManager {
         }
     }
 
+
+
+    public static boolean isRoomOccupied(String roomCode) {
+        File file = new File(ROOMS_FILE);
+        if (!file.exists())
+            return false; // CSV yoksa odalar bos kabul edilir
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            boolean isHeader = true;
+            while ((line = br.readLine()) != null) {
+                if (isHeader) {
+                    isHeader = false;
+                    continue;
+                }
+
+                String[] parts = line.split(",");
+                if (parts.length >= 4 && parts[0].trim().equalsIgnoreCase(roomCode)) {
+                    return Boolean.parseBoolean(parts[3].trim());
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Oda durumu okuma hatasi: " + e.getMessage());
+        }
+        return false; // Bulunamazsa bos kabul et
+    }
+
+
+    public static void setRoomOccupied(String roomCode, boolean occupied) {
+        File file = new File(ROOMS_FILE);
+        List<String> lines = new ArrayList<>();
+
+        // Dosya yoksa olustur
+        if (!file.exists()) {
+            initializeRoomsCSV();
+        }
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length >= 4 && parts[0].trim().equalsIgnoreCase(roomCode)) {
+                    // Bu satiri guncelle
+                    line = parts[0] + "," + parts[1] + "," + parts[2] + "," + occupied;
+                }
+                lines.add(line);
+            }
+        } catch (IOException e) {
+            System.out.println("Oda durumu okuma hatasi: " + e.getMessage());
+            return;
+        }
+
+        // Geri yaz
+        try (PrintWriter pw = new PrintWriter(new FileWriter(ROOMS_FILE))) {
+            for (String l : lines) {
+                pw.println(l);
+            }
+        } catch (IOException e) {
+            System.out.println("Oda durumu yazma hatasi: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Oda CSV dosyasini ilk kez olusturur (tum odalar bos).
+     */
+    public static void initializeRoomsCSV() {
+        try (PrintWriter pw = new PrintWriter(new FileWriter(ROOMS_FILE))) {
+            pw.println("RoomCode,RoomNumber,Type,IsOccupied");
+            pw.println("N101,101,Normal,false");
+            pw.println("N102,102,Normal,false");
+            pw.println("N103,103,Normal,false");
+            pw.println("N104,104,Normal,false");
+            pw.println("N105,105,Normal,false");
+            pw.println("N106,106,Normal,false");
+            pw.println("N107,107,Normal,false");
+            pw.println("N108,108,Normal,false");
+            pw.println("S201,201,Suite,false");
+            pw.println("S202,202,Suite,false");
+        } catch (IOException e) {
+            System.out.println("Oda CSV olusturma hatasi: " + e.getMessage());
+        }
+    }
+
+
     //---------------------------------------------------------------------RESERVATION OPERATIONS
     //Saves reservation files.
     private static String getRoomCode(Rooms room) {

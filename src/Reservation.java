@@ -5,11 +5,14 @@ public class Reservation {
     private final Rooms Room;
     private int StayDays;
     private double TotalPrice;
+    private final String RoomCode;
 
     private final ArrayList<ExtraService> additional;
 
     public Reservation(Customer Client, Rooms Room, int stayDays) {
-        if (Room.isOccupied()) {
+        this.RoomCode = findRoomCode(Room);
+
+        if (CSVManager.isRoomOccupied(RoomCode)) {
             throw new IllegalStateException("Room " + Room.getRoomNumber() + " is already occupied.\n");
         }
 
@@ -21,9 +24,34 @@ public class Reservation {
 
         this.additional = new ArrayList<>();
 
-        Room.setOccupied(true);
+        CSVManager.setRoomOccupied(RoomCode, true);
         System.out.println("\nReservation Created for " + Client.getName() + " " + Client.getSurname());
     }
+
+    private String findRoomCode(Rooms room) {
+        if (room == RoomManager.N101)
+            return "N101";
+        if (room == RoomManager.N102)
+            return "N102";
+        if (room == RoomManager.N103)
+            return "N103";
+        if (room == RoomManager.N104)
+            return "N104";
+        if (room == RoomManager.N105)
+            return "N105";
+        if (room == RoomManager.N106)
+            return "N106";
+        if (room == RoomManager.N107)
+            return "N107";
+        if (room == RoomManager.N108)
+            return "N108";
+        if (room == RoomManager.S201)
+            return "S201";
+        if (room == RoomManager.S202)
+            return "S202";
+        return "UNKNOWN";
+    }
+
 
     public void addService(ExtraService service) {
         if (this.Client != null) {
@@ -80,7 +108,6 @@ public class Reservation {
 
     public void saveToCSV() {
         CSVManager.saveReservation(Client, Room, StayDays, additional, TotalPrice);
-        CSVManager.saveRoomStatus();
     }
 
 }

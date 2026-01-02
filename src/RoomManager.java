@@ -36,17 +36,17 @@ public class RoomManager {
     public static void listAllRooms() {
         System.out.println("\n------------------------ ROOM LIST ------------------------");
         System.out.println("Normal Rooms:");
-        System.out.println("  N101 - Room 101 " + (N101.isOccupied() ? "[FULL]" : "[EMPTY]"));
-        System.out.println("  N102 - Room 102 " + (N102.isOccupied() ? "[FULL]" : "[EMPTY]"));
-        System.out.println("  N103 - Room 103 " + (N103.isOccupied() ? "[FULL]" : "[EMPTY]"));
-        System.out.println("  N104 - Room 104 " + (N104.isOccupied() ? "[FULL]" : "[EMPTY]"));
-        System.out.println("  N105 - Room 105 " + (N105.isOccupied() ? "[FULL]" : "[EMPTY]"));
-        System.out.println("  N106 - Room 106 " + (N106.isOccupied() ? "[FULL]" : "[EMPTY]"));
-        System.out.println("  N107 - Room 107 " + (N107.isOccupied() ? "[FULL]" : "[EMPTY]"));
-        System.out.println("  N108 - Room 108 " + (N108.isOccupied() ? "[FULL]" : "[EMPTY]"));
+        System.out.println("  N101 - Room 101 " + (CSVManager.isRoomOccupied("N101") ? "[FULL]" : "[EMPTY]"));
+        System.out.println("  N102 - Room 102 " + (CSVManager.isRoomOccupied("N102") ? "[FULL]" : "[EMPTY]"));
+        System.out.println("  N103 - Room 103 " + (CSVManager.isRoomOccupied("N103") ? "[FULL]" : "[EMPTY]"));
+        System.out.println("  N104 - Room 104 " + (CSVManager.isRoomOccupied("N104") ? "[FULL]" : "[EMPTY]"));
+        System.out.println("  N105 - Room 105 " + (CSVManager.isRoomOccupied("N105") ? "[FULL]" : "[EMPTY]"));
+        System.out.println("  N106 - Room 106 " + (CSVManager.isRoomOccupied("N106") ? "[FULL]" : "[EMPTY]"));
+        System.out.println("  N107 - Room 107 " + (CSVManager.isRoomOccupied("N107") ? "[FULL]" : "[EMPTY]"));
+        System.out.println("  N108 - Room 108 " + (CSVManager.isRoomOccupied("N108") ? "[FULL]" : "[EMPTY]"));
         System.out.println("\nSuite Rooms:");
-        System.out.println("  S201 - Room 201 " + (S201.isOccupied() ? "[FULL]" : "[EMPTY]"));
-        System.out.println("  S202 - Room 202 " + (S202.isOccupied() ? "[FULL]" : "[EMPTY]"));
+        System.out.println("  S201 - Room 201 " + (CSVManager.isRoomOccupied("S201") ? "[FULL]" : "[EMPTY]"));
+        System.out.println("  S202 - Room 202 " + (CSVManager.isRoomOccupied("S202") ? "[FULL]" : "[EMPTY]"));
         System.out.println("----------------------------------------------------------------\n");
     }
 }
