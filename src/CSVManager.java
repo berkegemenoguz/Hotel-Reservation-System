@@ -110,7 +110,7 @@ public class CSVManager {
     public static boolean isRoomOccupied(String roomCode) {
         File file = new File(ROOMS_FILE);
         if (!file.exists())
-            return false; // CSV yoksa odalar bos kabul edilir
+            return false; // Rooms empty if there is no CSV file
 
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
@@ -127,9 +127,9 @@ public class CSVManager {
                 }
             }
         } catch (IOException e) {
-            System.out.println("Oda durumu okuma hatasi: " + e.getMessage());
+            System.out.println("Room situation read error: " + e.getMessage());
         }
-        return false; // Bulunamazsa bos kabul et
+        return false;
     }
 
 
@@ -137,7 +137,7 @@ public class CSVManager {
         File file = new File(ROOMS_FILE);
         List<String> lines = new ArrayList<>();
 
-        // Dosya yoksa olustur
+        // Creates files if needed
         if (!file.exists()) {
             initializeRoomsCSV();
         }
@@ -147,29 +147,25 @@ public class CSVManager {
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length >= 4 && parts[0].trim().equalsIgnoreCase(roomCode)) {
-                    // Bu satiri guncelle
                     line = parts[0] + "," + parts[1] + "," + parts[2] + "," + occupied;
                 }
                 lines.add(line);
             }
         } catch (IOException e) {
-            System.out.println("Oda durumu okuma hatasi: " + e.getMessage());
+            System.out.println("Room situation read error: " + e.getMessage());
             return;
         }
 
-        // Geri yaz
+        // Prints back
         try (PrintWriter pw = new PrintWriter(new FileWriter(ROOMS_FILE))) {
             for (String l : lines) {
                 pw.println(l);
             }
         } catch (IOException e) {
-            System.out.println("Oda durumu yazma hatasi: " + e.getMessage());
+            System.out.println("Room situation print error: " + e.getMessage());
         }
     }
 
-    /**
-     * Oda CSV dosyasini ilk kez olusturur (tum odalar bos).
-     */
     public static void initializeRoomsCSV() {
         try (PrintWriter pw = new PrintWriter(new FileWriter(ROOMS_FILE))) {
             pw.println("RoomCode,RoomNumber,Type,IsOccupied");
@@ -184,7 +180,7 @@ public class CSVManager {
             pw.println("S201,201,Suite,false");
             pw.println("S202,202,Suite,false");
         } catch (IOException e) {
-            System.out.println("Oda CSV olusturma hatasi: " + e.getMessage());
+            System.out.println("Room creation error: " + e.getMessage());
         }
     }
 

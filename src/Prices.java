@@ -6,13 +6,13 @@ public final class Prices {
         throw new AssertionError("Prices class cannot be instantiated");
     }
 
-    // ---Oda Fiyatları---
+    // ---Room Prices---
 
     public static final double NORMAL_ROOM_PRICE = 500.0;
 
     public static final double SUITE_ROOM_PRICE = 1200.0;
 
-    // ---Extra Hizmet Fiyatları---
+    // ---Extra Service Prices---
 
     public static final double SPA_SERVICE_PRICE = 300.0;
 
