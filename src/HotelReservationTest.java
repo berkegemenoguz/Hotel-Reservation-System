@@ -1,8 +1,11 @@
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
-
-
+import org.junit.jupiter.api.AfterEach;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
 
 public class HotelReservationTest {
 
@@ -18,6 +21,7 @@ public class HotelReservationTest {
     }
 
     //-----------------Customer Tests-----------------
+    //-------------------------------------------------------
 
     @Test
     void testCustomerCreation() {
@@ -40,7 +44,7 @@ public class HotelReservationTest {
     }
 
     //-----------------Room Tests-----------------
-
+    //-------------------------------------------------------
     @Test
     void testNormalRoomPrice() {
         assertEquals(Prices.NORMAL_ROOM_PRICE, testNormalRoom.getNormalPrice());
@@ -79,6 +83,69 @@ public class HotelReservationTest {
         assertTrue(details.contains("Normal Room"));
     }
 
+    //-----------------HotelMenu Class Tests-----------------
+    //-------------------------------------------------------
 
+    private final InputStream originalIn = System.in;
+    private final PrintStream originalOut = System.out;
+    private ByteArrayOutputStream outputCapture;
+
+    private void setInput(String input) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+    }
+
+    private void captureOutput() {
+        outputCapture = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputCapture));
+    }
+
+    private String getOutput() {
+        return outputCapture.toString();
+    }
+
+    @AfterEach
+    void restoreStreams() {
+        System.setIn(originalIn);
+        System.setOut(originalOut);
+    }
+
+    @Test
+    void testMenuDisplaysOptions() {
+        // Input: 6 = Exit
+        setInput("6\n");
+        captureOutput();
+
+        HotelMenu.start();
+
+        String output = getOutput();
+        assertTrue(output.contains("MAIN MENU"));
+        assertTrue(output.contains("List the rooms"));
+        assertTrue(output.contains("Book a reservation"));
+        assertTrue(output.contains("Exit the system"));
+    }
+
+    @Test
+    void testListRoomsOption() {
+        // Input: 1 = List rooms, 6 = Exit
+        setInput("1\n6\n");
+        captureOutput();
+
+        HotelMenu.start();
+
+        String output = getOutput();
+        assertTrue(output.contains("Rooms") || output.contains("Room") || output.contains("N101"));
+    }
+
+    @Test
+    void testInvalidMenuChoice() {
+        // Input: 99 = Invalid, 6 = Exit
+        setInput("99\n6\n");
+        captureOutput();
+
+        HotelMenu.start();
+
+        String output = getOutput();
+        assertTrue(output.contains("Invalid"));
+    }
 
 }

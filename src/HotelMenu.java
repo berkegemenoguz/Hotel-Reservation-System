@@ -11,6 +11,7 @@ public class HotelMenu {
     private static int nextCustomerId = 1;
 
     public static void start() {
+        scanner = new Scanner(System.in);
         System.out.println("\n----------Hotel Reservation System----------");
 
         java.io.File roomsFile = new java.io.File("data/rooms.csv");
