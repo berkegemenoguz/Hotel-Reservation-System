@@ -64,25 +64,99 @@ public class HotelMenu {
     }
 
     private static void addCustomer() {
-        System.out.println("\n--- YENI MUSTERI EKLE ---");
+        System.out.println("\n--- Add New Customer ---");
 
-        System.out.print("Ad: ");
+        System.out.print("Name: ");
         String name = scanner.nextLine().trim();
 
-        System.out.print("Soyad: ");
+        System.out.print("Surname: ");
         String surname = scanner.nextLine().trim();
 
         System.out.print("Email: ");
         String email = scanner.nextLine().trim();
 
-        System.out.print("Telefon: ");
+        System.out.print("Phone: ");
         String phone = scanner.nextLine().trim();
 
         Customer customer = new Customer(nextCustomerId, name, surname, email, phone);
         customers.put(nextCustomerId, customer);
         CSVManager.saveCustomer(customer);
 
-        System.out.println("\nMusteri eklendi! ID: " + nextCustomerId);
+        System.out.println("\nCustomer added! ID: " + nextCustomerId);
         nextCustomerId++;
     }
+
+    private static void listCustomers() {
+        if (customers.isEmpty()) {
+            System.out.println("\nNo registered customers yet.");
+            return;
+        }
+
+        System.out.println("\n----------------- CUSTOMERS -----------------");
+        for (Customer c : customers.values()) {
+            System.out.println("ID: " + c.getId() + " | " + c.getName() + " " + c.getSurname() +
+                    " | " + c.getEmail() + " | Phone: " + c.getPhoneNumber());
+        }
+        System.out.println("------------------------------------------------");
+    }
+
+    private static void makeReservation() {
+        System.out.println("\n----- Make reservation -----");
+        if (customers.isEmpty()) {
+            System.out.println("No customers yet! Add customers.");
+            return;
+        }
+
+        listCustomers();
+
+        int customerId = getIntInput("Customer ID: ");
+        Customer customer = customers.get(customerId);
+
+        if (customer == null) {
+            System.out.println("Invalid ID!");
+            return;
+        }
+
+        RoomManager.listAllRooms();
+
+        System.out.print("Room code: (N101, S201 etc.): ");
+        String roomCode = scanner.nextLine().trim().toUpperCase();
+
+        Rooms room = RoomManager.getRoom(roomCode);
+        if (room == null) {
+            System.out.println("Invalid room code!");
+            return;
+        }
+
+        int days = getIntInput("Days to stay: ");
+        if (days <= 0) {
+            System.out.println("U cant stay 0 days!");
+            return;
+        }
+
+        try {
+            Reservation reservation = new Reservation(customer, room, days);
+
+
+            addExtraServices(reservation);
+
+            reservation.saveToCSV();
+            reservations.add(reservation);
+
+            System.out.println("\n------Reservation completed------");
+            reservation.prd();
+
+        } catch (IllegalStateException e) {
+            System.out.println("\nError: " + e.getMessage());
+        }
+    }
+
+
+}
+
+
+
+
+
+
 }
