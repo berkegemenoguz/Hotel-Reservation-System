@@ -1,6 +1,6 @@
 RoomCode,RoomNumber,Type,IsOccupied
-N101,101,Normal,true
-N102,102,Normal,true
+N101,101,Normal,false
+N102,102,Normal,false
 N103,103,Normal,false
 N104,104,Normal,false
 N105,105,Normal,false
@@ -8,4 +8,4 @@ N106,106,Normal,false
 N107,107,Normal,false
 N108,108,Normal,false
 S201,201,Suite,true
-S202,202,Suite,true
+S202,202,Suite,false
