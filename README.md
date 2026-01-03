@@ -22,6 +22,7 @@ Persisting data using CSV files
 The project emphasizes clean OOP design, modularity, and data persistence.
 
 🎯 Object-Oriented Programming Concepts
+
 🔹 Inheritance
 
 Rooms → Abstract base class defining common room properties
