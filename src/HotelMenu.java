@@ -17,39 +17,37 @@ public class HotelMenu {
         if (!roomsFile.exists()) {
             CSVManager.initializeRoomsCSV();
         }
-    }
 
-    boolean running = true;
-        while(running)
 
-    {
-        showMainMenu();
-        int choice = getIntInput("Operation you wanna make is: ");
+        boolean running = true;
+        while (running) {
+            showMainMenu();
+            int choice = getIntInput("Operation you wanna make is: ");
 
-        switch (choice) {
-            case 1:
-                RoomManager.listAllRooms();
-                break;
-            case 2:
-                makeReservation();
-                break;
-            case 3:
-                CSVManager.listReservations();
-                break;
-            case 4:
-                addCustomer();
-                break;
-            case 5:
-                listCustomers();
-                break;
-            case 6:
-                running = false;
-                System.out.println("\nQuitting the system.");
-                break;
-            default:
-                System.out.println("\nInvalid pick! Choose between 1-6.");
+            switch (choice) {
+                case 1:
+                    RoomManager.listAllRooms();
+                    break;
+                case 2:
+                    makeReservation();
+                    break;
+                case 3:
+                    CSVManager.listReservations();
+                    break;
+                case 4:
+                    addCustomer();
+                    break;
+                case 5:
+                    listCustomers();
+                    break;
+                case 6:
+                    running = false;
+                    System.out.println("\nQuitting the system.");
+                    break;
+                default:
+                    System.out.println("\nInvalid pick! Choose between 1-6.");
+            }
         }
-    }
         scanner.close();
 
     private static void showMainMenu() {
@@ -151,6 +149,65 @@ public class HotelMenu {
         }
     }
 
+    private static void addExtraServices(Reservation reservation) {
+        System.out.println("\n--- EKSTRA SERVISLER ---");
+        System.out.println("1. Gym Membership - " + Prices.GYM_SERVICE_PRICE + " TL");
+        System.out.println("2. Vale Service - " + Prices.VALET_SERVICE_PRICE + " TL");
+        System.out.println("3. Extra Bed - " + Prices.EXTRA_BED_PRICE + " TL");
+        System.out.println("4. Airport Transfer - " + Prices.AIRPORT_TRANSFER_PRICE + " TL");
+        System.out.println("5. Minibar - " + Prices.MINIBAR_PRICE + " TL");
+        System.out.println("6. Spa Session - " + Prices.SPA_SERVICE_PRICE + " TL");
+        System.out.println("0. Servis ekleme, devam et");
+
+        boolean addingServices = true;
+        while (addingServices) {
+            int choice = getIntInput("Servis secin (0 = bitti): ");
+
+            switch (choice) {
+                case 0:
+                    addingServices = false;
+                    break;
+                case 1:
+                    reservation.addService(ExtraServiceRegister.GYM);
+                    System.out.println("Gym eklendi!");
+                    break;
+                case 2:
+                    reservation.addService(ExtraServiceRegister.VALET);
+                    System.out.println("Vale eklendi!");
+                    break;
+                case 3:
+                    reservation.addService(ExtraServiceRegister.EXTRA_BED);
+                    System.out.println("Extra Bed eklendi!");
+                    break;
+                case 4:
+                    reservation.addService(ExtraServiceRegister.AIRPORT_TRANSFER);
+                    System.out.println("Airport Transfer eklendi!");
+                    break;
+                case 5:
+                    reservation.addService(ExtraServiceRegister.MINIBAR);
+                    System.out.println("Minibar eklendi!");
+                    break;
+                case 6:
+                    reservation.addService(ExtraServiceRegister.SPA);
+                    System.out.println("Spa eklendi!");
+                    break;
+                default:
+                    System.out.println("Gecersiz secim!");
+            }
+        }
+    }
+
+    private static int getIntInput(String prompt) {
+        System.out.print(prompt);
+        while (!scanner.hasNextInt()) {
+            System.out.println("Lutfen bir sayi girin!");
+            scanner.next();
+            System.out.print(prompt);
+        }
+        int value = scanner.nextInt();
+        scanner.nextLine(); // Clear the buffer
+        return value;
+    }
 
 }
 
@@ -159,4 +216,3 @@ public class HotelMenu {
 
 
 
-}
