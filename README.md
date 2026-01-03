@@ -1,37 +1,37 @@
-🏨 Hotel Reservation System
+HOTEL RESERVATION SYSTEM
 
-A Java-based hotel reservation management system developed using Object-Oriented Programming (OOP) principles.
-The system operates via a console-based interface and supports room reservations, customer management, and extra service handling.
+Hotel Reservation System is a Java-based hotel reservation management system developed using Object-Oriented Programming (OOP) principles.
+The system works with a console-based interface and supports room reservations, customer management, and extra service handling.
 
 This project was developed as the final project for the Object-Oriented Programming (OOP) course.
 
-📌 Project Overview
+PROJECT OVERVIEW
 
-The Hotel Reservation System is designed to simulate real-world hotel operations, including:
+The system simulates real-world hotel operations such as:
 
 Managing different room types
 
-Handling customer data
+Handling customer records
 
-Creating and tracking reservations
+Creating and managing reservations
 
-Calculating prices dynamically with extra services
+Calculating prices with extra services
 
-Persisting data using CSV files
+Storing data using CSV files
 
-The project emphasizes clean OOP design, modularity, and data persistence.
+The main goal of the project is to demonstrate clean OOP design, modular structure, and file-based data persistence.
 
-🎯 Object-Oriented Programming Concepts
+OBJECT-ORIENTED PROGRAMMING CONCEPTS
 
-🔹 Inheritance
+INHERITANCE
 
-Rooms → Abstract base class defining common room properties
+Rooms: Abstract base class that defines common room properties
 
-NormalRoom extends Rooms → Standard room implementation
+NormalRoom extends Rooms: Represents standard rooms
 
-SuiteRoom extends Rooms → Suite room implementation
+SuiteRoom extends Rooms: Represents suite rooms
 
-All subclasses inherit shared attributes such as:
+All room types inherit common attributes such as:
 
 roomNumber
 
@@ -39,9 +39,9 @@ normalPrice
 
 isOccupied
 
-🔹 Polymorphism
+POLYMORPHISM
 
-Bookings interface defines:
+Bookings interface defines the following methods:
 
 calculatePrice()
 
@@ -49,29 +49,29 @@ getRoomDetails()
 
 Rooms abstract class implements the Bookings interface
 
-NormalRoom and SuiteRoom override these methods differently, allowing dynamic behavior based on room type
+NormalRoom and SuiteRoom override these methods differently, enabling dynamic behavior based on room type
 
-✨ Features
+FEATURES
 
-Room Management
+ROOM MANAGEMENT
 
 8 Standard Rooms: N101 – N108
 
 2 Suite Rooms: S201 – S202
 
-Customer Management
+CUSTOMER MANAGEMENT
 
 Add new customers
 
 List existing customers
 
-Reservation System
+RESERVATION SYSTEM
 
-Room availability checks
+Room availability check
 
 Reservation creation and storage
 
-Extra Services
+EXTRA SERVICES
 
 Spa
 
@@ -85,33 +85,34 @@ Extra Bed
 
 Airport Transfer
 
-CSV-Based Data Storage
+CSV DATA STORAGE
 
-Persistent data handling without a database
+Customers, rooms, and reservations are stored in CSV files
 
-Easy file-based management
+No database is required
 
-📁 Project Structure
+PROJECT STRUCTURE
+
 src/
-├─ Main.java                    # Application entry point
-├─ HotelMenu.java               # Console menu and user interaction
-├─ Customer.java                # Customer model
-├─ Rooms.java                   # Abstract base room class
-├─ NormalRoom.java              # Standard room implementation
-├─ SuiteRoom.java               # Suite room implementation
-├─ RoomManager.java             # Room management logic
-├─ Reservation.java             # Reservation operations
-├─ Prices.java                  # Price constants
-├─ ExtraService.java            # Extra service model
-├─ ExtraServiceRegister.java    # Service definitions
-├─ CSVManager.java              # CSV read/write operations
+Main.java - Application entry point
+HotelMenu.java - Console menu and user interaction
+Customer.java - Customer model
+Rooms.java - Abstract base room class
+NormalRoom.java - Standard room implementation
+SuiteRoom.java - Suite room implementation
+RoomManager.java - Room management logic
+Reservation.java - Reservation operations
+Prices.java - Price constants
+ExtraService.java - Extra service model
+ExtraServiceRegister.java - Service definitions
+CSVManager.java - CSV read/write operations
 
 data/
-├─ customers.csv                # Customer data
-├─ reservations.csv             # Reservation records
-├─ rooms.csv                    # Room availability data
+customers.csv - Customer data
+reservations.csv - Reservation records
+rooms.csv - Room availability data
 
-🛠 Technologies Used
+TECHNOLOGIES USED
 
 Java
 
@@ -119,29 +120,20 @@ Object-Oriented Programming (OOP)
 
 CSV File Handling
 
-Console-Based UI
+Console-Based User Interface
 
-🚀 How to Run
-
-Clone the repository:
-
-git clone https://github.com/your-username/hotel-reservation-system.git
-
-
-Open the project in any Java IDE (IntelliJ IDEA, Eclipse, VS Code)
-
-Run Main.java
-
-Follow the console menu instructions
-
-📚 Educational Purpose
+EDUCATIONAL PURPOSE
 
 This project was developed for academic purposes to demonstrate:
 
-OOP principles (Inheritance, Polymorphism, Abstraction, Encapsulation)
+Inheritance
+
+Polymorphism
+
+Abstraction
+
+Encapsulation
 
 Interface usage
 
 File-based data persistence
-
-Modular Java application design
