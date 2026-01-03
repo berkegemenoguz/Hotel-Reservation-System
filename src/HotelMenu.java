@@ -20,7 +20,9 @@ public class HotelMenu {
     }
 
     boolean running = true;
-        while (running) {
+        while(running)
+
+    {
         showMainMenu();
         int choice = getIntInput("Operation you wanna make is: ");
 
@@ -49,16 +51,38 @@ public class HotelMenu {
         }
     }
         scanner.close();
-}
-private static void showMainMenu() {
-    System.out.println("\n---------- ANA MENU ----------");
-    System.out.println("1. List the rooms");
-    System.out.println("2. Book a reservation");
-    System.out.println("3. Show reservations");
-    System.out.println("4. Add customer");
-    System.out.println("5. Show customers");
-    System.out.println("6. Exit the system");
-    System.out.println("--------------------------------");
-}
 
+    private static void showMainMenu() {
+        System.out.println("\n---------- MAIN MENU ----------");
+        System.out.println("1. List the rooms");
+        System.out.println("2. Book a reservation");
+        System.out.println("3. Show reservations");
+        System.out.println("4. Add customer");
+        System.out.println("5. Show customers");
+        System.out.println("6. Exit the system");
+        System.out.println("--------------------------------");
+    }
 
+    private static void addCustomer() {
+        System.out.println("\n--- YENI MUSTERI EKLE ---");
+
+        System.out.print("Ad: ");
+        String name = scanner.nextLine().trim();
+
+        System.out.print("Soyad: ");
+        String surname = scanner.nextLine().trim();
+
+        System.out.print("Email: ");
+        String email = scanner.nextLine().trim();
+
+        System.out.print("Telefon: ");
+        String phone = scanner.nextLine().trim();
+
+        Customer customer = new Customer(nextCustomerId, name, surname, email, phone);
+        customers.put(nextCustomerId, customer);
+        CSVManager.saveCustomer(customer);
+
+        System.out.println("\nMusteri eklendi! ID: " + nextCustomerId);
+        nextCustomerId++;
+    }
+}
