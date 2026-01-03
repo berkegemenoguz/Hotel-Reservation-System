@@ -39,4 +39,46 @@ public class HotelReservationTest {
         assertEquals("davut@gmail.com", testCustomer.getEmail());
     }
 
+    //-----------------Room Tests-----------------
+
+    @Test
+    void testNormalRoomPrice() {
+        assertEquals(Prices.NORMAL_ROOM_PRICE, testNormalRoom.getNormalPrice());
+    }
+
+    @Test
+    void testSuiteRoomPrice() {
+        assertEquals(Prices.SUITE_ROOM_PRICE, testSuiteRoom.getNormalPrice());
+    }
+
+    @Test
+    void testNormalRoomCalculatePrice() {
+        int days = 3;
+        double expected = Prices.NORMAL_ROOM_PRICE * days;
+        assertEquals(expected, testNormalRoom.CalculatePrice(days));
+    }
+
+    @Test
+    void testSuiteRoomCalculatePrice() {
+        int days = 5;
+        double expected = Prices.SUITE_ROOM_PRICE * days;
+        assertEquals(expected, testSuiteRoom.CalculatePrice(days));
+    }
+
+    @Test
+    void testRoomOccupiedStatus() {
+        assertFalse(testNormalRoom.isOccupied());
+        testNormalRoom.setOccupied(true);
+        assertTrue(testNormalRoom.isOccupied());
+    }
+
+    @Test
+    void testRoomDetails() {
+        String details = testNormalRoom.getRoomDetails();
+        assertTrue(details.contains("101"));
+        assertTrue(details.contains("Normal Room"));
+    }
+
+
+
 }
