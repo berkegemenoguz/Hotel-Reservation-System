@@ -49,7 +49,7 @@ public class HotelMenu {
             }
         }
         scanner.close();
-
+    }
     private static void showMainMenu() {
         System.out.println("\n---------- MAIN MENU ----------");
         System.out.println("1. List the rooms");
@@ -150,18 +150,18 @@ public class HotelMenu {
     }
 
     private static void addExtraServices(Reservation reservation) {
-        System.out.println("\n--- EKSTRA SERVISLER ---");
+        System.out.println("\n------Extra Services------");
         System.out.println("1. Gym Membership - " + Prices.GYM_SERVICE_PRICE + " TL");
         System.out.println("2. Vale Service - " + Prices.VALET_SERVICE_PRICE + " TL");
         System.out.println("3. Extra Bed - " + Prices.EXTRA_BED_PRICE + " TL");
         System.out.println("4. Airport Transfer - " + Prices.AIRPORT_TRANSFER_PRICE + " TL");
         System.out.println("5. Minibar - " + Prices.MINIBAR_PRICE + " TL");
         System.out.println("6. Spa Session - " + Prices.SPA_SERVICE_PRICE + " TL");
-        System.out.println("0. Servis ekleme, devam et");
+        System.out.println("0. Service addition, go on");
 
         boolean addingServices = true;
         while (addingServices) {
-            int choice = getIntInput("Servis secin (0 = bitti): ");
+            int choice = getIntInput("Choose services (0 = bitti): ");
 
             switch (choice) {
                 case 0:
@@ -169,30 +169,30 @@ public class HotelMenu {
                     break;
                 case 1:
                     reservation.addService(ExtraServiceRegister.GYM);
-                    System.out.println("Gym eklendi!");
+                    System.out.println("Gym added!");
                     break;
                 case 2:
                     reservation.addService(ExtraServiceRegister.VALET);
-                    System.out.println("Vale eklendi!");
+                    System.out.println("Vale added!");
                     break;
                 case 3:
                     reservation.addService(ExtraServiceRegister.EXTRA_BED);
-                    System.out.println("Extra Bed eklendi!");
+                    System.out.println("Extra Bed added!");
                     break;
                 case 4:
                     reservation.addService(ExtraServiceRegister.AIRPORT_TRANSFER);
-                    System.out.println("Airport Transfer eklendi!");
+                    System.out.println("Airport Transfer added!");
                     break;
                 case 5:
                     reservation.addService(ExtraServiceRegister.MINIBAR);
-                    System.out.println("Minibar eklendi!");
+                    System.out.println("Minibar added!");
                     break;
                 case 6:
                     reservation.addService(ExtraServiceRegister.SPA);
-                    System.out.println("Spa eklendi!");
+                    System.out.println("Spa added!");
                     break;
                 default:
-                    System.out.println("Gecersiz secim!");
+                    System.out.println("Invalid pick!");
             }
         }
     }
@@ -200,12 +200,12 @@ public class HotelMenu {
     private static int getIntInput(String prompt) {
         System.out.print(prompt);
         while (!scanner.hasNextInt()) {
-            System.out.println("Lutfen bir sayi girin!");
+            System.out.println("Please insert a number!");
             scanner.next();
             System.out.print(prompt);
         }
         int value = scanner.nextInt();
-        scanner.nextLine(); // Clear the buffer
+        scanner.nextLine();
         return value;
     }
 
