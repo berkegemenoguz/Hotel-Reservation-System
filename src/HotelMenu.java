@@ -44,6 +44,8 @@ public class HotelMenu {
                 case 6:
                     running = false;
                     System.out.println("\nQuitting the system.");
+                case 7:
+                    clearAllData();
                     break;
                 default:
                     System.out.println("\nInvalid pick! Choose between 1-6.");
@@ -59,7 +61,27 @@ public class HotelMenu {
         System.out.println("4. Add customer");
         System.out.println("5. Show customers");
         System.out.println("6. Exit the system");
+        System.out.println("7. Clear all data");
         System.out.println("--------------------------------");
+    }
+
+    private static void clearAllData() {
+        System.out.println("\n  WARNING: This will delete all customers, rooms, and reservations.");
+        System.out.print("Are you sure? (yes/no): ");
+        String confirmation = scanner.nextLine().trim().toLowerCase();
+
+        if (confirmation.equals("yes") || confirmation.equals("y")) {
+            CSVManager.clearAllData();
+            CSVManager.initializeRoomsCSV();
+            customers.clear();
+            reservations.clear();
+            nextCustomerId = 1;
+            System.out.println("All data has been cleared. Rooms reset to default.");
+        } else if (confirmation.equals("no") || confirmation.equals("n")) {
+            System.out.println("Operation cancelled.");
+        } else {
+            System.out.println("Invalid input! Please enter 'yes' or 'no'.");
+        }
     }
 
     private static void addCustomer() {
@@ -162,7 +184,7 @@ public class HotelMenu {
 
         boolean addingServices = true;
         while (addingServices) {
-            int choice = getIntInput("Choose services (0 = bitti): ");
+            int choice = getIntInput("Choose services: ");
 
             switch (choice) {
                 case 0:
