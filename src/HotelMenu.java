@@ -68,6 +68,12 @@ public class HotelMenu {
     private static void clearAllData() {
         System.out.println("\n  WARNING: This will delete all customers, rooms, and reservations.");
         System.out.print("Are you sure? (yes/no): ");
+
+        if (!scanner.hasNextLine()) {
+            System.out.println("Operation cancelled (no input available).");
+            return;
+        }
+
         String confirmation = scanner.nextLine().trim().toLowerCase();
 
         if (confirmation.equals("yes") || confirmation.equals("y")) {
